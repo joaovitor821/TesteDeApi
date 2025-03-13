@@ -15,7 +15,7 @@ router.post('/livros', async (req, res) => {
         const duplicado = await Livro.findOne({titulo: titulo})
 
         if (duplicado) {
-            return res.status(201).json({erro: 'O título do livro já foi cadastrado.'})
+            return res.status(409).json({erro: 'O título do livro já foi cadastrado.'})
         }
 
 
@@ -68,3 +68,4 @@ router.delete('/livros/:id', async (req, res) => {
 });
 
 module.exports = router;
+
